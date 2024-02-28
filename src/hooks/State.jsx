@@ -16,11 +16,17 @@ export const State = () => {
   //   });
 
   const handleCount = () => {
-    setState({ count: state.count + 1 });
+    setState({
+      ...state,
+      count: state.count + 1,
+    });
   };
 
   const handleStatus = () => {
-    setState({ isCounting: !state.isCounting });
+    setState({
+      ...state,
+      isCounting: !state.isCounting,
+    });
   };
 
   useEffect(() => {
