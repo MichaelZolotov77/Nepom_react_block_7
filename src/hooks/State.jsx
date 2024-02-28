@@ -1,14 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export const State = () => {
-  const [value, setValue] = useState(() => {
-    const userCount = localStorage.getItem("count");
-    return +userCount || 0;
+  const [state, setState] = useState({
+    count: 0,
+    isCounting: false,
   });
 
-  setValue((prevValue) => {
-    return prevValue + 1;
-  });
+  //   const [value, setValue] = useState(() => {
+  //     const userCount = localStorage.getItem("count");
+  //     return +userCount || 0;
+  //   });
 
-  return <div>{}</div>;
+  //   setValue((prevValue) => {
+  //     return prevValue + 1;
+  //   });
+
+  const handleCount = () => {
+    setState({ count: state.count + 1 });
+  };
+
+  const handleStatus = () => {
+    setState({ isCounting: !state.isCounting });
+  };
+
+  useEffect(() => {
+    console.log(state);
+  }, [state]);
+
+  return (
+    <div>
+      <button onClick={handleCount}>click</button>
+      <button onClick={handleStatus}>me too</button>
+    </div>
+  );
 };
