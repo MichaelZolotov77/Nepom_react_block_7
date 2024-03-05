@@ -1,10 +1,10 @@
 import React, { useState, useCallback } from "react";
 import ReactDOM from "react-dom";
 
-function CountButton({ onClick, count }) {
+const CountButton = React.memo(({ onClick, count }) => {
   console.log("render", count);
   return <button onClick={onClick}>{count}</button>;
-}
+});
 
 function DualCounter() {
   const [count1, setCount1] = useState(0);
